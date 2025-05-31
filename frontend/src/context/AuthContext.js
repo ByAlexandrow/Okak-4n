@@ -1,93 +1,40 @@
 "use client"
 
-import { createContext, useState, useEffect, useContext } from "react"
-import { useNavigate } from "react-router-dom"
-import api from "../services/api"
+import { createContext, useContext, useState } from "react"
 
 const AuthContext = createContext()
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => {
+  const context = useContext(AuthContext)
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider")
+  }
+  return context
+}
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const navigate = useNavigate()
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const token = localStorage.getItem("token")
-        if (token) {
-          api.defaults.headers.common["Authorization"] = `Bearer ${token}`
-          const response = await api.get("/api/users/current/")
-          setUser(response.data)
-        }
-      } catch (error) {
-        console.error("Auth check failed:", error)
-        localStorage.removeItem("token")
-        delete api.defaults.headers.common["Authorization"]
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    checkAuth()
-  }, [])
-
-  const login = async (username, password) => {
-    try {
-      const response = await api.post("/api/users/login/", { username, password })
-      if (response.data.success) {
-        const { user, profile, token } = response.data
-        localStorage.setItem("token", token)
-        api.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        setUser({ ...user, role: profile.role })
-        return { success: true }
-      }
-      return { success: false, message: response.data.message || "Ошибка входа" }
-    } catch (error) {
-      console.error("Login error:", error)
-      return {
-        success: false,
-        message: error.response?.data?.message || "Ошибка сервера при входе",
-      }
-    }
+  const login = (userData) => {
+    setUser(userData)
+    setIsAuthenticated(true)
+    localStorage.setItem("user", JSON.stringify(userData))
   }
 
-  const logout = async () => {
-    try {
-      await api.post("/api/users/logout/")
-    } catch (error) {
-      console.error("Logout error:", error)
-    } finally {
-      localStorage.removeItem("token")
-      delete api.defaults.headers.common["Authorization"]
-      setUser(null)
-      navigate("/login")
-    }
-  }
-
-  // Для демо-режима
-  const demoLogin = (role) => {
-    const demoUser = {
-      id: "demo",
-      username: role === "admin" ? "admin" : "manager",
-      email: `${role}@example.com`,
-      first_name: role === "admin" ? "Админ" : "Менеджер",
-      last_name: "Демо",
-      role: role,
-    }
-    setUser(demoUser)
-    return { success: true }
+  const logout = () => {
+    setUser(null)
+    setIsAuthenticated(false)
+    localStorage.removeItem("user")
   }
 
   const value = {
     user,
+    isAuthenticated,
     loading,
     login,
     logout,
-    demoLogin,
-    isAuthenticated: !!user,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

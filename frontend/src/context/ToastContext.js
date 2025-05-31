@@ -1,22 +1,22 @@
 "use client"
 
-import { createContext, useState, useContext } from "react"
+import { createContext, useContext, useState } from "react"
 
 const ToastContext = createContext()
 
-export const useToast = () => useContext(ToastContext)
+export const useToast = () => {
+  const context = useContext(ToastContext)
+  if (!context) {
+    throw new Error("useToast must be used within a ToastProvider")
+  }
+  return context
+}
 
 export const ToastProvider = ({ children }) => {
   const [toast, setToast] = useState(null)
 
-  const showToast = ({ title, message, type = "success", duration = 3000 }) => {
-    setToast({ title, message, type, duration })
-
-    if (duration > 0) {
-      setTimeout(() => {
-        setToast(null)
-      }, duration)
-    }
+  const showToast = ({ title, message, type = "success" }) => {
+    setToast({ title, message, type })
   }
 
   const hideToast = () => {
