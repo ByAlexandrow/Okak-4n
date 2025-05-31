@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'devrequest.urls'
+ROOT_URLCONF = 'okak.urls'
 
 TEMPLATES = [
     {
@@ -62,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'devrequest.wsgi.application'
+WSGI_APPLICATION = 'okak.wsgi.application'
 
 # Database
 DATABASES = {
@@ -74,7 +74,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME', 'devrequest'),
+#         'NAME': os.getenv('DB_NAME', 'okak'),
 #         'USER': os.getenv('DB_USER', 'postgres'),
 #         'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
 #         'HOST': os.getenv('DB_HOST', 'localhost'),
@@ -133,7 +133,7 @@ EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@devrequest.com')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@okak.com')
 
 # OpenRouter API settings
 OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', '')
