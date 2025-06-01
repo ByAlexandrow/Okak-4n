@@ -61,7 +61,7 @@ class Team(models.Model):
 
         result = {}
         try:
-            done_status = TaskStatus.objects.filter(title__iexact='завершено').latest('id')
+            done_status = TaskStatus.objects.filter(title__iexact='Закрытые').latest('id')
         except ObjectDoesNotExist:
             done_status = None
 
@@ -80,6 +80,13 @@ class Team(models.Model):
 
 class Worker(AbstractUser):
     """Модель исполнителя."""
+    GRADES = [
+        ('JUNIOR', 'Junior'),
+        ('MIDDLE', 'Middle'),
+        ('SENIOR', 'Senior'),
+        ('TEAMLEAD', 'Teamlead'),
+    ]
+
 
     team = models.ForeignKey(
         Team,
@@ -88,6 +95,16 @@ class Worker(AbstractUser):
         on_delete=models.CASCADE,
         related_name='worker',
         verbose_name='Команда',
+    )
+    grade = models.CharField(
+        max_length=50,
+        choices=GRADES,
+        default='JUNIOR',
+        verbose_name='Грейд',
+    )
+    work_exp = models.IntegerField(
+        default=0,
+        verbose_name='Опыт работы',
     )
     role = models.CharField(
         max_length=100,
@@ -100,7 +117,7 @@ class Worker(AbstractUser):
     )
     groups = models.ManyToManyField(
         Group,
-        related_name='worker',  # уникальное имя, чтобы не конфликтовать с auth.User
+        related_name='worker',
         blank=True,
         help_text='Группы, к которым принадлежит пользователь.',
         verbose_name='Группы',

@@ -2,7 +2,6 @@
 
 from django.db import models
 from django.utils import timezone
-from django.utils.html import format_html
 from django.core.exceptions import ValidationError
 
 from tasks.utils import upload_to_path, validate_file_extension
@@ -15,27 +14,10 @@ class TaskStatus(models.Model):
         max_length=50,
         verbose_name='Статус выполнения задачи',
     )
-    color_tag = models.CharField(
-        max_length=7,
-        verbose_name='Цветовой тэг (HEX)',
-        help_text='Цвет в формате #000000',
-        blank=True,
-        null=True,
-    )
     is_published = models.BooleanField(
         default=False,
         verbose_name='Опубликовать',
     )
-
-    def color_preview(self):
-        """Возвращает HTML для предпросмотра цвета."""
-        if self.color_tag:
-            return format_html(
-                '<div style="width: 30px; height: 20px; background-color: {}; border: 1px solid #000;"></div>',
-                self.color_tag
-            )
-        return "-"
-    color_preview.short_description = 'Цвет'
 
     def __str__(self):
         return str(self.title)

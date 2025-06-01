@@ -23,6 +23,6 @@ class TeadAdmin(admin.ModelAdmin):
 class WorkerAdmin(admin.ModelAdmin):
     """Регистрация модели Worker."""
 
-    list_display = ('username', 'team', 'role')
+    list_display = ('username', 'team', 'grade', 'role')
     search_fields = ('user__username', 'user__first_name', 'user__last_name', 'role')
-    list_filter = ('team', 'role')
+    list_filter = ('team', 'grade', 'role')

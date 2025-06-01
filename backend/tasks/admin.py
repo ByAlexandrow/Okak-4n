@@ -23,7 +23,7 @@ class TaskFileInline(admin.StackedInline):
 class TaskStatusAdmin(admin.ModelAdmin):
     """Регистрация модели TaskStatus в админ-панели."""
 
-    list_display = ('title', 'color_tag', 'is_published')
+    list_display = ('title', 'is_published')
 
 
 @admin.register(WorkDirection)

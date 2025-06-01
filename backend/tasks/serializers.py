@@ -11,7 +11,7 @@ class TaskStatusSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TaskStatus
-        fields = ['id', 'title', 'color_tag', 'is_published']
+        fields = ['id', 'title', 'is_published']
 
 
 class WorkDirectionSerializer(serializers.ModelSerializer):
