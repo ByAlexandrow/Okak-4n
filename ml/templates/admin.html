@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevRequest - Админ панель</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="loginContainer" class="login-container">
+        <div class="login-box">
+            <h2>Вход в систему</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Логин</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit">Войти</button>
+                <p>Тестовые аккаунты:<br>
+                Admin: admin / admin<br>
+                Root: root / root<br>
+                User: user / user</p>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminDashboard" class="admin-dashboard">
+        <aside class="sidebar">
+            <nav class="sidebar-menu">
+                <button data-section="projects" class="active">Проекты</button>
+                <button data-section="teams">Команды</button>
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            <header class="header">
+                <div class="header-brand">
+                    <span>DevRequest</span>
+                </div>
+                <div class="header-search">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="projectSearchInput" placeholder="Поиск по проектам...">
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" id="headerCreateTaskBtn">Создать</button>
+                    <button class="logout-btn">🚪</button>
+                    <span id="currentUserName"></span>
+                    <span id="userAvatarInitial" class="avatar-initial"></span>
+                </div>
+            </header>
+
+            <section id="projects-section" class="section active">
+                <div class="section-header">
+                    <h2>Проекты</h2>
+                    <div class="filter-buttons">
+                        <button>За все время</button>
+                        <button>За месяц</button>
+                        <button>За неделю</button>
+                    </div>
+                </div>
+                <div id="kanbanBoard" class="kanban-board"></div>
+            </section>
+
+            <section id="teams-section" class="section">
+                <div class="section-header">
+                    <h2>Команды и их нагрузка</h2>
+                </div>
+                <div id="teamsGridContainer" class="teams-grid"></div>
+                <div class="chart-container">
+                    <div class="gantt-chart">
+                        <h3>График Ганта</h3>
+                        <div id="ganttChart"></div>
+                    </div>
+                    <div class="workload-chart">
+                        <h3>Нагрузка команд</h3>
+                        <canvas id="workloadChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="create-project-section" class="section">
+                <div class="section-header">
+                    <h2>Создание нового проекта</h2>
+                </div>
+                <form id="projectForm" class="project-form">
+                    <div class="form-group">
+                        <label for="projectNameForm">Название проекта *</label>
+                        <input type="text" id="projectNameForm" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDescriptionForm">Описание проекта</label>
+                        <textarea id="projectDescriptionForm" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectStartDateForm">Дата начала *</label>
+                        <input type="date" id="projectStartDateForm" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectEndDateForm">Дата завершения *</label>
+                        <input type="date" id="projectEndDateForm" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectStatusForm">Статус</label>
+                        <select id="projectStatusForm">
+                            <option value="new">Новая задача</option>
+                            <option value="in-progress">В работе</option>
+                            <option value="review">На проверке</option>
+                            <option value="completed">Закрытые</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectCostForm">Стоимость (₽)</label>
+                        <input type="number" id="projectCostForm" placeholder="Авто или вручную">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectHoursForm">Оценочные часы</label>
+                        <input type="number" id="projectHoursForm" placeholder="Авто или вручную">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectLinkForm">Ссылка (ТЗ, Figma, GitHub)</label>
+                        <input type="url" id="projectLinkForm">
+                    </div>
+                    <button type="submit">Создать проект</button>
+                    <button type="button" id="cancelProjectCreation">Отмена</button>
+                </form>
+                <div id="analysisResults" class="analysis-results">
+                    <div class="analysis-content"></div>
+                </div>
+            </section>
+        </main>
+
+        <div id="loadingOverlay" class="loading-overlay">
+            <span>Анализируем проект...</span>
+        </div>
+
+        <div id="projectDetailsModal" class="modal">
+            <div class="modal-content">
+                <span id="closeModalBtn" class="close">×</span>
+                <h2 id="modalProjectName"></h2>
+                <div id="modalBodyContent"></div>
+                <button id="editProjectBtn">Редактировать</button>
+                <button id="saveChangesBtn" style="display: none;">Сохранить изменения</button>
+                <button id="cancelEditBtn" style="display: none;">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/admin.js"></script>
+</body>
+</html>
