@@ -6,7 +6,6 @@ from django.utils.html import format_html
 from django.core.exceptions import ValidationError
 
 from tasks.utils import upload_to_path, validate_file_extension
-# from teams.models import Team, Worker
 
 
 class TaskStatus(models.Model):
@@ -59,11 +58,11 @@ class WorkDirection(models.Model):
         max_length=300,
         verbose_name='Стек технологий',
     )
-    # team = models.ForeignKey(
-    #     Team,
-    #     on_delete=models.CASCADE,
-    #     verbose_name='Команда',
-    # )
+    team = models.ForeignKey(
+        'workers.Team',
+        on_delete=models.CASCADE,
+        verbose_name='Команда',
+    )
     is_published = models.BooleanField(
         default=False,
         verbose_name='Опубликовать',
@@ -104,16 +103,15 @@ class Task(models.Model):
         null=True,
         verbose_name='Статус задачи',
     )
-    # team = models.ForeignKey(
-    #     Team,
-    #     on_delete=models.CASCADE,
-    #     verbose_name='Команда',
-    # )
-    # worker = models.ManyToManyField(
-    #     Worker,
-    #     on_delete=models.CASCADE,
-    #     verbose_name='Исполнители',
-    # )
+    team = models.ForeignKey(
+        'workers.Team',
+        on_delete=models.CASCADE,
+        verbose_name='Команда',
+    )
+    worker = models.ManyToManyField(
+        'workers.Worker',
+        verbose_name='Исполнители',
+    )
     price = models.IntegerField(
         verbose_name='Стоимость проекта',
     )
@@ -204,9 +202,9 @@ class SubTask(models.Model):
     )
 
     def clean(self):
-        """Функция для проверки ограничения по созданию количества задач."""
-
         if not self.pk:
+            if self.task_id is None:
+                return
             if self.task.subtasks.count() >= 8:
                 raise ValidationError('Нельзя добавить больше 8 подзадач к одной задаче.')
 

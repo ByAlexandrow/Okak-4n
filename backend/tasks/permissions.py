@@ -74,20 +74,20 @@ class TaskPermission(BasePermission):
         user = request.user
         if not user or not user.is_authenticated:
             return False
-        
+
         if user.is_superuser or user.role.lower() == 'manager':
             return True
-        
+
         if user.role.lower() == 'worker':
             if request.method in SAFE_METHODS + ('PUT', 'PATCH'):
                 return True
         return False
-    
+
     def has_object_permission(self, request, view, obj):
         user = request.user
         if user.is_superuser or user.role.lower() == 'manager':
             return True
-        
+
         if user.role.lower() == 'worker':
             if user in obj.worker.all():
                 if request.method in SAFE_METHODS:

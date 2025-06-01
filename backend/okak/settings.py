@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'tasks',
 ]
 
-# AUTH_USER_MODEL = 'teams.Worker'
+AUTH_USER_MODEL = 'workers.Worker'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

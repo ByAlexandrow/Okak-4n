@@ -79,8 +79,8 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'description', 'direction', 'direction_id',
             'deadline', 'status', 'status_id', 'price', 'complexity',
-            'link', 'created_at', 'files', 'subtasks',
-            # 'team', 'team_id', 'worker', 'worker_ids'
+            'link', 'created_at', 'files', 'subtasks', 'team',
+            'team_id', 'worker', 'worker_ids'
         ]
         read_only_fields = ['created_at']
 
@@ -108,7 +108,6 @@ class TaskSerializer(serializers.ModelSerializer):
         instance = getattr(self, 'instance', None)
 
         if user.role == 'worker' and instance and user in instance.worker.all():
-            # Разрешаем изменять только поле 'status' и 'status_id'
             allowed_fields = {'status', 'status_id'}
             changed_fields = set(data.keys())
             if not changed_fields.issubset(allowed_fields):
@@ -118,21 +117,21 @@ class TaskSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         direction = validated_data.pop('direction')
         status = validated_data.pop('status', None)
-        # team = validated_data.pop('team', None)
-        # workers = validated_data.pop('worker', None)
+        team = validated_data.pop('team', None)
+        workers = validated_data.pop('worker', None)
 
-        task = Task.objects.create(direction=direction, status=status, **validated_data)  # team=team
+        task = Task.objects.create(direction=direction, status=status, team=team, **validated_data)
 
-        # if workers is not None:
-        #     task.worker.set(workers)
+        if workers is not None:
+            task.worker.set(workers)
 
         return task
 
     def update(self, instance, validated_data):
         direction = validated_data.pop('direction', None)
         status = validated_data.pop('status', None)
-        # team = validated_data.pop('team', None)
-        # workers = validated_data.pop('worker', None)
+        team = validated_data.pop('team', None)
+        workers = validated_data.pop('worker', None)
 
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
@@ -141,12 +140,12 @@ class TaskSerializer(serializers.ModelSerializer):
             instance.direction = direction
         if status is not None:
             instance.status = status
-        # if team is not None:
-        #     instance.team = team
+        if team is not None:
+            instance.team = team
 
         instance.save()
 
-        # if workers is not None:
-        #     instance.worker.set(workers)
+        if workers is not None:
+            instance.worker.set(workers)
 
         return instance
