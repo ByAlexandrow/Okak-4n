@@ -1,6 +1,10 @@
 """Файл моделей команды и пользователя."""
 
+import hashlib
+
 from django.db import models
+from django.conf import settings
+from django.utils import timezone
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -136,9 +140,32 @@ class Worker(AbstractUser):
         verbose_name='Опубликовать',
     )
 
+    def save(self, *args, **kwargs):
+        if self.password and not self.password.startswith('sha256$'):
+            self.set_password(self.password)
+        super().save(*args, **kwargs)
+
+    def set_password(self, raw_password):
+        salt = "random_salt"
+        hash = hashlib.sha256((salt + raw_password).encode()).hexdigest()
+        self.password = f"sha256${hash}"
+
     def __str__(self):
         return self.get_full_name() or self.username
 
     class Meta:
         verbose_name = 'Работник'
         verbose_name_plural = 'Работники'
+
+
+class ActiveToken(models.Model):
+    jti = models.CharField(max_length=255, unique=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+
+    def is_expired(self):
+        return timezone.now() > self.expires_at
+
+    def __str__(self):
+        return f"Token {self.jti} for {self.user}"

@@ -38,6 +38,8 @@ class WorkDirection(models.Model):
     )
     tech_stack = models.CharField(
         max_length=300,
+        null=True,
+        blank=True,
         verbose_name='Стек технологий',
     )
     team = models.ForeignKey(

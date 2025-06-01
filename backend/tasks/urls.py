@@ -5,8 +5,9 @@ from rest_framework.routers import DefaultRouter
 
 from tasks.views import (
     TaskStatusViewSet, WorkDirectionViewSet,
-    TaskViewSet, TaskFileViewSet, SubTaskViewSet
+    TaskViewSet, TaskFileViewSet, SubTaskViewSet,
 )
+from tasks.utils import get_suitable_developer, estimate_task_details
 
 
 router = DefaultRouter()
@@ -17,7 +18,7 @@ router.register(r'task-files', TaskFileViewSet)
 router.register(r'subtasks', SubTaskViewSet)
 
 urlpatterns = [
-    # path('analyze/'),
-    # path('submit/'),
-    path('', include(router.urls))
+    path('person/', get_suitable_developer, name='person'),
+    path('complexity/', estimate_task_details, name='complexity'),
+    path('', include(router.urls)),
 ]

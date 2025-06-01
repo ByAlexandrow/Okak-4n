@@ -72,7 +72,6 @@ class TaskSerializer(serializers.ModelSerializer):
     )
     direction = serializers.StringRelatedField(read_only=True)
     status = serializers.StringRelatedField(read_only=True)
-    # files и subtasks можно добавить, если нужно
 
     class Meta:
         model = Task

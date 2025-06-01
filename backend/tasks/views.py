@@ -79,3 +79,7 @@ class TaskViewSet(viewsets.ModelViewSet):
             return Task.objects.filter(worker=user)
         else:
             return Task.objects.none()
+
+
+def estimate_task_details():
+    ...
