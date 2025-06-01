@@ -1,0 +1,520 @@
+[
+    {
+        "id": "dev_1",
+        "name": "Разработчик 1",
+        "direction": "Mobile (Android)",
+        "seniority_level": "Lead",
+        "experience_years": 10,
+        "skills": {
+            "Android SDK": "Expert",
+            "Jetpack Compose": "Expert",
+            "Java": "Master"
+        },
+        "current_tasks": [
+            {
+                "name": "Сверстать новую страницу",
+                "description": "Необходимо реализовать адаптивную верстку (Mobile (Android) задача).",
+                "direction": "Mobile (Android)",
+                "deadline": "2025-06-21",
+                "complexity": 3
+            },
+            {
+                "name": "Добавить валидацию формы",
+                "description": "Необходимо реализовать адаптивную верстку (Mobile (Android) задача).",
+                "direction": "Mobile (Android)",
+                "deadline": "2025-06-16",
+                "complexity": 3
+            }
+        ],
+        "current_load_percent": 73,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "проектирование архитектуры",
+            "работа с базами данных"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_2",
+        "name": "Разработчик 2",
+        "direction": "Mobile (Android)",
+        "seniority_level": "Lead",
+        "experience_years": 14,
+        "skills": {
+            "Jetpack Compose": "Expert",
+            "Firebase Android": "Master",
+            "Android SDK": "Master"
+        },
+        "current_tasks": [],
+        "current_load_percent": 77,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "рефакторинг кода",
+            "оптимизация производительности"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_3",
+        "name": "Разработчик 3",
+        "direction": "Frontend",
+        "seniority_level": "Junior",
+        "experience_years": 1,
+        "skills": {
+            "HTML/CSS": "Intermediate",
+            "Angular": "Intermediate",
+            "Redux": "Intermediate",
+            "Tailwind CSS": "Intermediate"
+        },
+        "current_tasks": [
+            {
+                "name": "Сверстать новую страницу",
+                "description": "Ускорить отрисовку элементов (Frontend задача).",
+                "direction": "Frontend",
+                "deadline": "2025-06-26",
+                "complexity": 2
+            }
+        ],
+        "current_load_percent": 25,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "исправление багов",
+            "работа с базами данных",
+            "проектирование архитектуры"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_4",
+        "name": "Разработчик 4",
+        "direction": "Fullstack",
+        "seniority_level": "Lead",
+        "experience_years": 15,
+        "skills": {
+            "SQL": "Master",
+            "Node.js": "Master",
+            "TypeScript": "Expert",
+            "Docker": "Master"
+        },
+        "current_tasks": [
+            {
+                "name": "Сверстать новую страницу",
+                "description": "Ускорить отрисовку элементов (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-26",
+                "complexity": 1
+            },
+            {
+                "name": "Добавить валидацию формы",
+                "description": "Проверить корректность ввода пользователя (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-12",
+                "complexity": 2
+            },
+            {
+                "name": "Добавить валидацию формы",
+                "description": "Ускорить отрисовку элементов (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-13",
+                "complexity": 5
+            }
+        ],
+        "current_load_percent": 60,
+        "weekly_capacity_hours": 30,
+        "preferences": [
+            "рефакторинг кода",
+            "исследование новых технологий"
+        ],
+        "vacation_schedule": {
+            "start_date": "2025-06-21",
+            "end_date": "2025-07-05"
+        }
+    },
+    {
+        "id": "dev_5",
+        "name": "Разработчик 5",
+        "direction": "Fullstack",
+        "seniority_level": "Middle",
+        "experience_years": 2,
+        "skills": {
+            "Node.js": "Intermediate",
+            "React": "Proficient"
+        },
+        "current_tasks": [
+            {
+                "name": "Оптимизировать загрузку изображений",
+                "description": "Ускорить отрисовку элементов (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-14",
+                "complexity": 5
+            },
+            {
+                "name": "Добавить валидацию формы",
+                "description": "Необходимо реализовать адаптивную верстку (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-05",
+                "complexity": 5
+            }
+        ],
+        "current_load_percent": 80,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "рефакторинг кода",
+            "исправление багов"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_6",
+        "name": "Разработчик 6",
+        "direction": "Fullstack",
+        "seniority_level": "Junior",
+        "experience_years": 0,
+        "skills": {
+            "TypeScript": "Basic",
+            "React": "Intermediate",
+            "Node.js": "Intermediate",
+            "Python": "Intermediate",
+            "Docker": "Basic"
+        },
+        "current_tasks": [
+            {
+                "name": "Оптимизировать загрузку изображений",
+                "description": "Необходимо реализовать адаптивную верстку (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-15",
+                "complexity": 5
+            },
+            {
+                "name": "Оптимизировать загрузку изображений",
+                "description": "Необходимо реализовать адаптивную верстку (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-23",
+                "complexity": 3
+            },
+            {
+                "name": "Сверстать новую страницу",
+                "description": "Необходимо реализовать адаптивную верстку (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-27",
+                "complexity": 5
+            }
+        ],
+        "current_load_percent": 15,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "новые фичи",
+            "оптимизация производительности"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_7",
+        "name": "Разработчик 7",
+        "direction": "Mobile (iOS)",
+        "seniority_level": "Middle",
+        "experience_years": 3,
+        "skills": {
+            "UIKit": "Intermediate",
+            "Firebase iOS": "Proficient",
+            "SwiftUI": "Intermediate",
+            "CoreData": "Proficient",
+            "Swift": "Intermediate"
+        },
+        "current_tasks": [
+            {
+                "name": "Добавить новый экран настроек",
+                "description": "Сделать в соответствии с гайдлайнами iOS (Mobile (iOS) задача).",
+                "direction": "Mobile (iOS)",
+                "deadline": "2025-06-12",
+                "complexity": 2
+            },
+            {
+                "name": "Исправить баг с push-уведомлениями",
+                "description": "Сделать в соответствии с гайдлайнами iOS (Mobile (iOS) задача).",
+                "direction": "Mobile (iOS)",
+                "deadline": "2025-06-08",
+                "complexity": 1
+            }
+        ],
+        "current_load_percent": 54,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "новые фичи"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_8",
+        "name": "Разработчик 8",
+        "direction": "Frontend",
+        "seniority_level": "Junior",
+        "experience_years": 0,
+        "skills": {
+            "Webpack": "Basic",
+            "HTML/CSS": "Intermediate"
+        },
+        "current_tasks": [
+            {
+                "name": "Добавить валидацию формы",
+                "description": "Ускорить отрисовку элементов (Frontend задача).",
+                "direction": "Frontend",
+                "deadline": "2025-06-09",
+                "complexity": 1
+            }
+        ],
+        "current_load_percent": 5,
+        "weekly_capacity_hours": 30,
+        "preferences": [
+            "рефакторинг кода"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_9",
+        "name": "Разработчик 9",
+        "direction": "QA",
+        "seniority_level": "Lead",
+        "experience_years": 11,
+        "skills": {
+            "API Testing": "Master",
+            "TestRail": "Master",
+            "Playwright": "Master",
+            "Performance Testing": "Expert",
+            "Selenium": "Master"
+        },
+        "current_tasks": [
+            {
+                "name": "Написать автотесты для API",
+                "description": "Для модуля платежей (QA задача).",
+                "direction": "QA",
+                "deadline": "2025-06-21",
+                "complexity": 2
+            }
+        ],
+        "current_load_percent": 71,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "оптимизация производительности",
+            "проектирование архитектуры",
+            "новые фичи"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_10",
+        "name": "Разработчик 10",
+        "direction": "Backend",
+        "seniority_level": "Middle",
+        "experience_years": 2,
+        "skills": {
+            "Kafka": "Intermediate",
+            "GraphQL": "Proficient",
+            "REST API": "Intermediate"
+        },
+        "current_tasks": [],
+        "current_load_percent": 72,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "исследование новых технологий",
+            "исправление багов"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_11",
+        "name": "Разработчик 11",
+        "direction": "QA",
+        "seniority_level": "Lead",
+        "experience_years": 13,
+        "skills": {
+            "Cypress": "Master",
+            "Jira": "Master"
+        },
+        "current_tasks": [
+            {
+                "name": "Провести регрессионное тестирование",
+                "description": "Для модуля платежей (QA задача).",
+                "direction": "QA",
+                "deadline": "2025-06-06",
+                "complexity": 3
+            }
+        ],
+        "current_load_percent": 84,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "новые фичи",
+            "исправление багов"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_12",
+        "name": "Разработчик 12",
+        "direction": "Fullstack",
+        "seniority_level": "Junior",
+        "experience_years": 1,
+        "skills": {
+            "React": "Intermediate",
+            "Node.js": "Intermediate",
+            "Docker": "Basic",
+            "TypeScript": "Intermediate",
+            "Python": "Basic"
+        },
+        "current_tasks": [
+            {
+                "name": "Добавить валидацию формы",
+                "description": "Ускорить отрисовку элементов (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-05",
+                "complexity": 5
+            },
+            {
+                "name": "Сверстать новую страницу",
+                "description": "Проверить корректность ввода пользователя (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-06",
+                "complexity": 5
+            },
+            {
+                "name": "Сверстать новую страницу",
+                "description": "Необходимо реализовать адаптивную верстку (Fullstack задача).",
+                "direction": "Fullstack",
+                "deadline": "2025-06-14",
+                "complexity": 1
+            }
+        ],
+        "current_load_percent": 23,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "исследование новых технологий",
+            "работа с базами данных"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_13",
+        "name": "Разработчик 13",
+        "direction": "DevOps",
+        "seniority_level": "Middle",
+        "experience_years": 2,
+        "skills": {
+            "Jenkins": "Proficient",
+            "Terraform": "Intermediate",
+            "Ansible": "Proficient",
+            "Docker": "Intermediate"
+        },
+        "current_tasks": [
+            {
+                "name": "Настроить CI/CD пайплайн",
+                "description": "Уменьшить размер образа (DevOps задача).",
+                "direction": "DevOps",
+                "deadline": "2025-06-13",
+                "complexity": 2
+            },
+            {
+                "name": "Настроить CI/CD пайплайн",
+                "description": "Уменьшить размер образа (DevOps задача).",
+                "direction": "DevOps",
+                "deadline": "2025-06-02",
+                "complexity": 1
+            },
+            {
+                "name": "Оптимизировать Docker-образ",
+                "description": "Уменьшить размер образа (DevOps задача).",
+                "direction": "DevOps",
+                "deadline": "2025-06-03",
+                "complexity": 3
+            }
+        ],
+        "current_load_percent": 56,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "рефакторинг кода",
+            "оптимизация производительности"
+        ],
+        "vacation_schedule": {
+            "start_date": "2025-07-24",
+            "end_date": "2025-08-04"
+        }
+    },
+    {
+        "id": "dev_14",
+        "name": "Разработчик 14",
+        "direction": "Frontend",
+        "seniority_level": "Lead",
+        "experience_years": 10,
+        "skills": {
+            "TypeScript": "Expert",
+            "MobX": "Expert",
+            "Vue.js": "Master",
+            "JavaScript": "Expert",
+            "Redux": "Master"
+        },
+        "current_tasks": [
+            {
+                "name": "Оптимизировать загрузку изображений",
+                "description": "Ускорить отрисовку элементов (Frontend задача).",
+                "direction": "Frontend",
+                "deadline": "2025-06-26",
+                "complexity": 5
+            },
+            {
+                "name": "Сверстать новую страницу",
+                "description": "Необходимо реализовать адаптивную верстку (Frontend задача).",
+                "direction": "Frontend",
+                "deadline": "2025-06-21",
+                "complexity": 1
+            },
+            {
+                "name": "Добавить валидацию формы",
+                "description": "Проверить корректность ввода пользователя (Frontend задача).",
+                "direction": "Frontend",
+                "deadline": "2025-06-16",
+                "complexity": 3
+            }
+        ],
+        "current_load_percent": 84,
+        "weekly_capacity_hours": 30,
+        "preferences": [
+            "исправление багов",
+            "оптимизация производительности",
+            "исследование новых технологий"
+        ],
+        "vacation_schedule": null
+    },
+    {
+        "id": "dev_15",
+        "name": "Разработчик 15",
+        "direction": "Frontend",
+        "seniority_level": "Middle",
+        "experience_years": 4,
+        "skills": {
+            "Webpack": "Proficient",
+            "Vue.js": "Intermediate"
+        },
+        "current_tasks": [
+            {
+                "name": "Сверстать новую страницу",
+                "description": "Проверить корректность ввода пользователя (Frontend задача).",
+                "direction": "Frontend",
+                "deadline": "2025-06-28",
+                "complexity": 3
+            },
+            {
+                "name": "Добавить валидацию формы",
+                "description": "Проверить корректность ввода пользователя (Frontend задача).",
+                "direction": "Frontend",
+                "deadline": "2025-06-02",
+                "complexity": 2
+            }
+        ],
+        "current_load_percent": 80,
+        "weekly_capacity_hours": 40,
+        "preferences": [
+            "оптимизация производительности",
+            "работа с базами данных"
+        ],
+        "vacation_schedule": null
+    }
+]
